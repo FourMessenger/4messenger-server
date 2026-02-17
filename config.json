@@ -1,0 +1,98 @@
+{
+  "server": {
+    "port": 3000,
+    "host": "0.0.0.0",
+    "name": "4 Messenger Server",
+    "cors": {
+      "origin": "*",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
+    }
+  },
+  "security": {
+    "serverPassword": "changeme123",
+    "jwtSecret": "your-super-secret-jwt-key-change-this-in-production",
+    "jwtExpiry": "7d",
+    "bcryptRounds": 12,
+    "rateLimitWindow": 900000,
+    "rateLimitMax": 100,
+    "encryptionEnabled": true,
+    "encryptionAlgorithm": "aes-256-gcm"
+  },
+  "captcha": {
+    "enabled": true,
+    "type": "cloudflare",
+    "cloudflare": {
+      "siteKey": "0x4AAAAAAXXXXXXXXXXXXXX",
+      "secretKey": "0x4AAAAAAXXXXXXXXXXXXXX"
+    }
+  },
+  "email": {
+    "verificationEnabled": false,
+    "gmail": {
+      "email": "your-gmail@gmail.com",
+      "appPassword": "xxxx xxxx xxxx xxxx"
+    },
+    "from": "4 Messenger",
+    "verificationSubject": "Verify your 4 Messenger account"
+  },
+  "registration": {
+    "enabled": true,
+    "defaultRole": "user",
+    "usernameMinLength": 3,
+    "usernameMaxLength": 32,
+    "passwordMinLength": 8,
+    "maxUsersPerIP": 3
+  },
+  "files": {
+    "maxSize": 10485760,
+    "allowedTypes": [
+      "image/jpeg", "image/png", "image/gif", "image/webp", "image/svg+xml",
+      "application/pdf", "text/plain",
+      "application/zip", "application/x-rar-compressed", "application/x-7z-compressed",
+      "audio/mpeg", "audio/wav", "audio/ogg", "audio/webm", "audio/mp4", "audio/aac", "audio/flac",
+      "video/mp4", "video/webm", "video/quicktime", "video/x-msvideo",
+      "application/octet-stream"
+    ],
+    "uploadDir": "./uploads",
+    "maxUploadsPerMinute": 10
+  },
+  "database": {
+    "type": "sqlite",
+    "sqlite": {
+      "filename": "./data/messenger.db"
+    },
+    "postgres": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "four_messenger",
+      "user": "postgres",
+      "password": "postgres"
+    }
+  },
+  "calls": {
+    "enabled": true,
+    "maxParticipants": 10,
+    "stunServers": [
+      "stun:stun.l.google.com:19302",
+      "stun:stun1.l.google.com:19302"
+    ],
+    "turnServer": {
+      "url": "",
+      "username": "",
+      "credential": ""
+    }
+  },
+  "logging": {
+    "level": "info",
+    "file": "./logs/server.log",
+    "console": true,
+    "maxFileSize": "10mb",
+    "maxFiles": 5
+  },
+  "admin": {
+    "createDefaultAdmin": true,
+    "defaultAdminUsername": "admin",
+    "defaultAdminPassword": "admin123",
+    "defaultAdminEmail": "admin@4messenger.com"
+  }
+}
