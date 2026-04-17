@@ -1,0 +1,5 @@
+node_modules/
+logs/
+uploads/
+browsersdata.json
+data/messenger.db
